@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Rasna! 🎂</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background: radial-gradient(circle at top, #2b1055, #12072b);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 18px;
+      overflow-x: hidden;
+      transition: background 1.5s ease;
+    }
+    body.celebrate-bg {
+      background: linear-gradient(135deg, #ff758c 0%, #c471ed 50%, #4a154b 100%);
+    }
+    body.romantic-bg {
+      background: linear-gradient(135deg, #ff4b72 0%, #ff758c 50%, #8e2de2 100%);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+      padding: 30px 20px;
+      border-radius: 26px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      max-width: 460px;
+      width: 100%;
+      transition: all 0.5s ease;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+      color: #fff0f5;
+      text-shadow: 0 2px 10px rgba(255, 117, 140, 0.5);
+    }
+    .subtitle {
+      font-size: 0.98rem;
+      color: #f3e5f5;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    /* Cake & Candle Section */
+    #cakeSection {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .cake-container {
+      position: relative;
+      height: 185px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      margin: 10px 0 22px;
+      cursor: pointer;
+    }
+    .candle {
+      width: 16px;
+      height: 50px;
+      background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ff4b72 5px, #ff4b72 10px);
+      border-radius: 4px;
+      position: relative;
+      z-index: 3;
+    }
+    .wick {
+      width: 3px;
+      height: 8px;
+      background: #333;
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .flame {
+      width: 18px;
+      height: 30px;
+      background: radial-gradient(ellipse at bottom, #fff 10%, #ffeb3b 40%, #ff9800 80%, transparent 100%);
+      border-radius: 50% 50% 35% 35%;
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px #ff9800, 0 0 40px #ffeb3b;
+      animation: flicker 0.15s infinite alternate;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .flame.blown {
+      opacity: 0;
+      transform: translateX(-50%) scale(0.2) translateY(-20px);
+      animation: none;
+    }
+    .smoke {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: rgba(220, 220, 220, 0.7);
+      border-radius: 50%;
+      opacity: 0;
+    }
+    .smoke.active {
+      animation: smokeRise 1.2s ease-out forwards;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+      100% { transform: translateX(-50%) scale(1.06) rotate(2deg); }
+    }
+    @keyframes smokeRise {
+      0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -45px) scale(3.5); }
+    }
+
+    .cake-top {
+      width: 125px;
+      height: 42px;
+      background: #ff9ebb;
+      border-radius: 12px 12px 0 0;
+      border-bottom: 4px solid #ff6b95;
+      z-index: 2;
+    }
+    .cake-bottom {
+      width: 165px;
+      height: 55px;
+      background: #ff6b95;
+      border-radius: 10px 10px 6px 6px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+    .plate {
+      width: 195px;
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    button {
+      background: #fff;
+      color: #d81b60;
+      border: none;
+      padding: 12px 24px;
+      font-size: 0.98rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 260px;
+    }
+    button:active {
+      transform: scale(0.96);
+    }
+    .mic-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      font-size: 0.88rem;
+    }
+
+    /* Penguins Section */
+    #penguinSection {
+      display: none;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    .penguin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 15px 0 20px;
+    }
+    .penguin-box {
+      background: rgba(255, 255, 255, 0.18);
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      padding: 14px 6px 10px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+      animation: floatPenguin 2.5s ease-in-out infinite;
+    }
+    .penguin-box:nth-child(2) { animation-delay: 0.4s; }
+    .penguin-box:nth-child(3) { animation-delay: 0.8s; }
+
+    .penguin-box:hover, .penguin-box.active {
+      background: rgba(255, 255, 255, 0.32);
+      border-color: #fff;
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+    .penguin-badge {
+      position: absolute;
+      top: -10px;
+      right: -6px;
+      background: #ff4081;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: bold;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .penguin-svg {
+      width: 68px;
+      height: 75px;
+       display: block;
+      margin: 0 auto 6px;
+    }
+    .penguin-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    @keyframes floatPenguin {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Message Card */
+    .message-card {
+      display: none;
+      background: rgba(255, 255, 255, 0.22);
+      padding: 20px;
+      border-radius: 18px;
+      text-align: left;
+      line-height: 1.65;
+      font-size: 0.98rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      animation: popUp 0.45s ease forwards;
+    }
+    .msg-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff3b0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .msg-body {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .signature {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: #ffe5ec;
+      margin-top: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popUp {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="title">Happy Birthday, Rasna! 🎂</h1>
+    <p id="instruction" class="subtitle">Aankhein band karke ek pyari si wish maango aur candle par tap karke bujhao ✨</p>
+
+    <!-- STEP 1: CAKE & CANDLE -->
+    <div id="cakeSection">
+      <div class="cake-container" onclick="blowCandle()" title="Tap to blow candle">
+        <div class="candle">
+          <div class="wick"></div>
+          <div id="flame" class="flame"></div>
+          <div id="smoke" class="smoke"></div>
+        </div>
+        <div class="cake-top"></div>
+        <div class="cake-bottom"></div>
+        <div class="plate"></div>
+      </div>
+
+      <div class="btn-group">
+        <button onclick="blowCandle()">🕯️ Candle Bujhayein (Tap)</button>
+        <button id="micBtn" class="mic-btn" onclick="startMic()">🎤 Ya Mic On Karke Phook Maarein</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: 3 CUTE PENGUINS -->
+    <div id="penguinSection">
+      <div class="penguin-grid">
+        
+        <!-- Penguin 1 -->
+        <div class="penguin-box" id="p1" onclick="showMessage(1)">
+          <div class="penguin-badge">1</div>
+          <svg class="penguin-svg" viewBox="0 0 100 110">
+            <ellipse cx="50" cy="62" rx="34" ry="40" fill="#2b2d42"/>
+            <ellipse cx="50" cy="67" rx="23" ry="31" fill="#ffffff"/>
+            <ellipse cx="35" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <ellipse cx="65" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <circle cx="38" cy="45" r="4.5" fill="#111"/>
+            <circle cx="62" cy="45" r="4.5" fill="#111"/>
+            <circle cx="39.5" cy="43.5" r="1.5" fill="#fff"/>
+            <circle cx="63.5" cy="43.5" r="1.5" fill="#fff"/>
+            <ellipse cx="32" cy="52" rx="5" ry="2.5" fill="#ff758f" opacity="0.8"/>
+            <ellipse cx="68" cy="52" rx="5" ry="2.5" fill="#ff758f" opacity="0.8"/>
+            <polygon points="44,50 56,50 50,58" fill="#ff9f1c"/>
+            <text x="50" y="82" font-size="22" text-anchor="middle">🌟</text>
+          </svg>
+          <div class="penguin-label">Tap Me ✨</div>
+        </div>
+
+        <!-- Penguin 2 -->
+        <div class="penguin-box" id="p2" onclick="showMessage(2)">
+          <div class="penguin-badge">2</div>
+          <svg class="penguin-svg" viewBox="0 0 100 110">
+            <ellipse cx="50" cy="62" rx="34" ry="40" fill="#2b2d42"/>
+            <ellipse cx="50" cy="67" rx="23" ry="31" fill="#ffffff"/>
+            <ellipse cx="35" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <ellipse cx="65" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <circle cx="38" cy="45" r="4.5" fill="#111"/>
+            <circle cx="62" cy="45" r="4.5" fill="#111"/>
+            <circle cx="39.5" cy="43.5" r="1.5" fill="#fff"/>
+            <circle cx="63.5" cy="43.5" r="1.5" fill="#fff"/>
+            <ellipse cx="32" cy="52" rx="5.5" ry="3" fill="#ff4d6d"/>
+            <ellipse cx="68" cy="52" rx="5.5" ry="3" fill="#ff4d6d"/>
+            <polygon points="44,50 56,50 50,58" fill="#ff9f1c"/>
+            <text x="50" y="82" font-size="22" text-anchor="middle">🌸</text>
+          </svg>
+          <div class="penguin-label">Tap Me 💖</div>
+        </div>
+
+        <!-- Penguin 3 -->
+        <div class="penguin-box" id="p3" onclick="showMessage(3)">
+          <div class="penguin-badge">3</div>
+          <svg class="penguin-svg" viewBox="0 0 100 110">
+            <ellipse cx="50" cy="62" rx="34" ry="40" fill="#2b2d42"/>
+            <ellipse cx="50" cy="67" rx="23" ry="31" fill="#ffffff"/>
+            <ellipse cx="35" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <ellipse cx="65" cy="100" rx="10" ry="5" fill="#ff9f1c"/>
+            <circle cx="38" cy="45" r="4.5" fill="#111"/>
+            <circle cx="62" cy="45" r="4.5" fill="#111"/>
+            <circle cx="39.5" cy="43.5" r="1.5" fill="#fff"/>
+            <circle cx="63.5" cy="43.5" r="1.5" fill="#fff"/>
+            <ellipse cx="32" cy="52" rx="6" ry="3" fill="#ff4d6d"/>
+            <ellipse cx="68" cy="52" rx="6" ry="3" fill="#ff4d6d"/>
+            <polygon points="44,50 56,50 50,58" fill="#ff9f1c"/>
+            <text x="50" y="82" font-size="22" text-anchor="middle">💌</text>
+          </svg>
+          <div class="penguin-label">Tap Me 💌</div>
+        </div>
+
+      </div>
+
+      <!-- Message Box -->
+      <div id="msgBox" class="message-card">
+        <div id="msgTitle" class="msg-title"></div>
+        <div id="msgBody" class="msg-body"></div>
+        <div id="msgSign" class="signature"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    let isBlown = false;
+    let audioContext, analyser, microphone;
+
+    const messages = {
+      1: {
+        title: "🐧 Penguin #1: Best Wishes & Success 🌟",
+        body: "Happy Birthday, Rasna! 🎂<br><br>Tumhari sabse khaas baat tumhari positivity aur mehnat hai. Life ke har step par aise hi poore confidence ke saath aage badhti raho. Apne sapno ko kabhi chhota mat samajhna—chahe raaste mein kitne bhi challenges aayein, kabhi rukna mat, kyunki tum har woh success aur khushi deserve karti ho jiski tumne khwahish ki hai.<br><br>Hamesha aise hi muskurati raho aur nayi heights touch karti raho. Wishing you the brightest future ahead!",
+        sign: "— Best Wishes ✨"
+      },
+      2: {
+        title: "🐧 Penguin #2: Tumhari Khubsurati 💖",
+        body: "Ek aur baat jo hamesha notice ki hai...<br><br>Rasna, tum sach mein bohot khubsurat ho. Khaas kar <strong>tumhari aankhein—woh behad pyaari hain</strong>, jinme ek alag hi masoomiyat aur sukoon dikhta hai.<br><br>Baki sabhi ladkiyon se tum bilkul alag aur kuch khaas lagti ho. Tumhari ek chhoti si smile kisi ka bhi din bana sakti hai! 🌸",
+        sign: "— Keep Smiling Always 💖"
+      },
+      3: {
+        title: "🐧 Penguin #3: Dil Ki Ek Sachchi Baat 💌",
+        body: "Ab shayad tum yeh sab padh kar soch rahi hogi ki aaj main yeh sab kyu bol raha hoon...<br><br>Sach kahun toh, <strong>main tumhe apne college ke 2nd year se bohot pasand karta hoon.</strong> Bohot baar socha ki tumhe bataun, par aaj tak kabhi itni himmat hi nahi juta paya ki tumhare saamne aakar yeh keh sakun.<br><br>Aaj tumhare birthday ke khaas din par bas dil ki yeh baat tum tak pohchana chahta tha. Hamesha khush raho, Rasna! ❤️",
+        sign: "— Tumhara, Kaal ✨"
+      }
+    };
+
+    function blowCandle() {
+      if (isBlown) return;
+      isBlown = true;
+
+      document.getElementById('flame').classList.add('blown');
+      document.getElementById('smoke').classList.add('active');
+      document.body.classList.add('celebrate-bg');
+
+      if (audioContext) {
+        audioContext.close();
+      }
+
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 140, spread: 90, origin: { y: 0.6 } });
+      }
+
+      // 1 second baad Cake hatakar 3 Penguins dikhayein
+      setTimeout(() => {
+        document.getElementById('cakeSection').style.display = 'none';
+        document.getElementById('title').innerText = "Yay! Happy Birthday Rasna! 🎉";
+        document.getElementById('instruction').innerText = "Tumhare liye 3 cute Penguins kuch messages laaye hain! Ek-ek karke Penguin (1, 2 aur 3) ko touch karo 👇🐧";
+        document.getElementById('penguinSection').style.display = 'block';
+      }, 950);
+    }
+
+    function showMessage(num) {
+      // Remove active state from all penguins
+      document.querySelectorAll('.penguin-box').forEach(box => box.classList.remove('active'));
+      document.getElementById('p' + num).classList.add('active');
+
+      const msgBox = document.getElementById('msgBox');
+      msgBox.style.display = 'none';
+      
+      setTimeout(() => {
+        document.getElementById('msgTitle').innerHTML = messages[num].title;
+        document.getElementById('msgBody').innerHTML = messages[num].body;
+        document.getElementById('msgSign').innerHTML = messages[num].sign;
+        msgBox.style.display = 'block';
+      }, 60);
+
+      if (num === 3) {
+        document.body.classList.add('romantic-bg');
+      }
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: num === 3 ? 110 : 50,
+          spread: 75,
+          origin: { y: 0.7 }
+        });
+      }
+    }
+
+    async function startMic() {
+      const micBtn = document.getElementById('micBtn');
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        micBtn.innerText = "🌬️ Ab Phone ke paas Phook Maarein...";
+        micBtn.style.background = "rgba(76, 175, 80, 0.45)";
+
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        microphone = audioContext.createMediaStreamSource(stream);
+        microphone.connect(analyser);
+        analyser.fftSize = 256;
+
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        function checkBlow() {
+          if (isBlown) return;
+          analyser.getByteFrequencyData(dataArray);
+          let sum = 0;
+          for (let i = 0; i < dataArray.length; i++) {
+            sum += dataArray[i];
+          }
+          let average = sum / dataArray.length;
+
+          if (average > 45) {
+            blowCandle();
+          } else {
+            requestAnimationFrame(checkBlow);
+          }
+        }
+        checkBlow();
+      } catch (err) {
+        alert("Mic allow nahi hua. Aap seedha Candle par Tap karke bujha sakti hain!");
+      }
+    }
+  </script>
+
+</body>
+  </html>
+              
